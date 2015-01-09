@@ -6,6 +6,24 @@
      */
     const COMPONENT_FILES = ['components/Patchwork.scss'];
 
+    /**
+     * @constant DESTINATION_RELEASE
+     * @type {String}
+     */
+    const DESTINATION_RELEASE = 'dist';
+
+    /**
+     * @constant DESTINATION_FILENAME
+     * @type {String}
+     */
+    const DESTINATION_FILENAME = 'patchwork.css';
+
+    /**
+     * @constant DESTINATION_DEVELOPMENT
+     * @type {String}
+     */
+    const DESTINATION_DEVELOPMENT = 'example/vendor/patchwork';
+
     // Gulp Dependencies...
     var gulp       = require('gulp'),
         sass       = require('gulp-sass'),
@@ -17,10 +35,10 @@
         gulp.src(COMPONENT_FILES)
             .pipe(sourcemaps.init())
             .pipe(sass())
-            .pipe(sourcemaps.write())
-            .pipe(rename('patchwork.css'))
-            .pipe(gulp.dest('dist'))
-            .pipe(gulp.dest('example/vendor/patchwork'));
+            .pipe(rename(DESTINATION_FILENAME))
+            .pipe(sourcemaps.write('./'))
+            .pipe(gulp.dest(DESTINATION_RELEASE))
+            .pipe(gulp.dest(DESTINATION_DEVELOPMENT))
 
     });
 

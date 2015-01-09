@@ -1,0 +1,1 @@
+{"version":3,"sources":["Patchwork.scss"],"names":[],"mappings":";AAAA;EACE,SAAS","file":"patchwork.css","sourcesContent":[".patchwork {\n  display: flex;\n}"],"sourceRoot":"/source/"}
