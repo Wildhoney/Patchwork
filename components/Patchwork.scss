@@ -1,29 +1,65 @@
-$columns: 12;
+$size-limit: 15;
+$order-limit: 25;
+$breakpoints: (tiny: 400px, small: 550px, medium: 700px, large: 960px);
+$colours: (tiny: red, small: green, medium: blue, large: yellow);
 
 .patchwork {
   display: flex;
+  max-width: 960px;
+  flex-direction: row;
+  border: 1px solid green;
+}
+
+@media all and (max-width: map-get($breakpoints, small)) {
+
+  .patchwork {
+    flex-direction: column;
+  }
+
+}
+
+.column {
+  border: 1px solid red;
+}
+
+@mixin column-styles($label) {
+
+  .patchwork {
+    background-color: map-get($colours, $label) !important;
+  }
+
+  @for $index from 0 through $size-limit {
+
+    *[data-#{$label}-size="#{$index}"] {
+      flex: $index;
+    }
+
+  }
+
+  @for $index from 0 through $order-limit {
+
+    *[data-#{$label}-order="#{$index}"] {
+      order: $index;
+    }
+
+  }
+
 }
 
 @mixin columns {
 
   $labels-list: tiny small medium large;
-  $size-limit: 15;
-  $order-limit: 25;
 
   @each $label in $labels-list {
 
-    @for $index from 1 through $size-limit {
+    @if $label == large {
 
-      *[data-#{$label}-size="#{$index}"] {
-        flex: $index;
-      }
+      @include column-styles($label);
+      
+    } @else {
 
-    }
-
-    @for $index from 1 through $order-limit {
-
-      *[data-#{$label}-order="#{$index}"] {
-        order: $index;
+      @media all and (max-width: map-get($breakpoints, $label)) {
+        @include column-styles($label);
       }
 
     }
