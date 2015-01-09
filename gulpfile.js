@@ -46,6 +46,7 @@
 
     });
 
+    gulp.task('test', []);
     gulp.task('build', ['build-sass']);
     gulp.task('default', ['build']);
     gulp.task('watch', function watch() {
