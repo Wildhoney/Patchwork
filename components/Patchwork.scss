@@ -1,3 +1,35 @@
+$columns: 12;
+
 .patchwork {
   display: flex;
 }
+
+@mixin columns {
+
+  $labels-list: tiny small medium large;
+  $size-limit: 15;
+  $order-limit: 25;
+
+  @each $label in $labels-list {
+
+    @for $index from 1 through $size-limit {
+
+      *[data-#{$label}-size="#{$index}"] {
+        flex: $index;
+      }
+
+    }
+
+    @for $index from 1 through $order-limit {
+
+      *[data-#{$label}-order="#{$index}"] {
+        order: $index;
+      }
+
+    }
+
+  }
+
+}
+
+@include columns;
