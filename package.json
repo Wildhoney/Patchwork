@@ -1,0 +1,36 @@
+{
+  "name": "patchwork",
+  "version": "0.1.0",
+  "description": "Patchwork is a responsive CSS framework using the benefits of HTML5's Flexbox.",
+  "main": "dist/patchwork.css",
+  "directories": {
+    "example": "example"
+  },
+  "scripts": {
+    "test": "gulp test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Wildhoney/Patchwork.git"
+  },
+  "keywords": [
+    "responsive",
+    "framework",
+    "css",
+    "styles",
+    "sass",
+    "scss",
+    "mobile",
+    "tablet",
+    "desktop"
+  ],
+  "author": "Adam Timberlake <adam.timberlake@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Wildhoney/Patchwork/issues"
+  },
+  "homepage": "https://github.com/Wildhoney/Patchwork",
+  "devDependencies": {
+    "express": "^4.10.6"
+  }
+}
