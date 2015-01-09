@@ -31,6 +31,9 @@
   },
   "homepage": "https://github.com/Wildhoney/Patchwork",
   "devDependencies": {
-    "express": "^4.10.6"
+    "express": "^4.10.6",
+    "gulp": "^3.8.10",
+    "gulp-rename": "^1.2.0",
+    "gulp-sass": "^1.2.4"
   }
 }
