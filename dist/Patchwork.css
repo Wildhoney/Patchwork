@@ -1,5 +1,7 @@
 /* line 1, /Users/atimberlake/Webroot/Patchwork/components/Patchwork.scss */
 .patchwork {
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex; }
 
 

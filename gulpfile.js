@@ -25,18 +25,22 @@
     const DESTINATION_DEVELOPMENT = 'example/vendor/patchwork';
 
     // Gulp Dependencies...
-    var gulp       = require('gulp'),
-        sass       = require('gulp-sass'),
-        rename     = require('gulp-rename'),
-        sourcemaps = require('gulp-sourcemaps');
+    var gulp         = require('gulp'),
+        sass         = require('gulp-sass'),
+        rename       = require('gulp-rename'),
+        sourcemaps   = require('gulp-sourcemaps'),
+        autoprefixer = require('gulp-autoprefixer');
 
     gulp.task('build-sass', function () {
 
         gulp.src(COMPONENT_FILES)
             .pipe(sourcemaps.init())
-            .pipe(sass())
+            .pipe(sass({ outputStyle: 'expanded' }))
+            .pipe(autoprefixer({
+                browsers: ['> 1%', 'last 2 versions', 'Firefox ESR', 'Opera 12.1']
+            }))
             .pipe(rename(DESTINATION_FILENAME))
-            .pipe(sourcemaps.write('./'))
+            .pipe(sourcemaps.write('.'))
             .pipe(gulp.dest(DESTINATION_RELEASE))
             .pipe(gulp.dest(DESTINATION_DEVELOPMENT))
 
