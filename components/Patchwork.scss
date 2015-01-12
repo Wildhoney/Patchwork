@@ -27,8 +27,8 @@
 // Maximum width of the container.
 $max-width: 960px;
 
-// Upper limit for the size attributes.
-$size-limit: 15;
+// Amount of columns to be rendered.
+$column-count: 12;
 
 // Range for the order attributes.
 $order-limit: (from: -10, to: 25);
@@ -44,30 +44,43 @@ $breakpoints: (none: 0, tiny: 400px, small: 550px, medium: 700px, large: 960px);
 
 */
 
+$column-width: ($max-width / $column-count);
+
 .patchwork {
   display: flex;
   max-width: 960px;
   flex-direction: row;
+  flex-flow: row nowrap;
 }
 
 *[data-patchwork] {
-  flex: 1;
+  flex: 1 1 100%;
 }
 
 @media all and (max-width: map-get($breakpoints, small)) {
 
   .patchwork {
-    flex-direction: column;
+      flex-flow: row wrap;
   }
 
 }
 
 @mixin column-styles($label) {
 
-  @for $index from 0 through $size-limit {
+  *[data-patchwork*="#{$label}-default"] {
+      flex: 1 $max-width;
+  }
+
+  @for $index from 0 through $column-count {
 
     *[data-patchwork*="#{$label}-size: #{$index}"] {
-      flex: $index;
+
+        @if $index == 0 {
+            flex: $index;
+        } @else {
+            flex: $index ($column-width * $index);
+        }
+
     }
 
   }
