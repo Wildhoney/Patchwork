@@ -2,6 +2,11 @@
     box-sizing: border-box;
 }
 
+h1 {
+    font-family: Lato, Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+}
+
 section.patchwork section.column {
     background-color: rgba(0, 0, 0, .1);
     border-radius: 3px;

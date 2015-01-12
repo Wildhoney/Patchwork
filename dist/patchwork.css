@@ -3,15 +3,15 @@
    ~ Patchwork Framework ~
 
            _,-,-.
-        ,-: |.'-:|..-.
-   _..-:| | `-`. \.--'
- <...--:'-|_|_|;  \
-        \   /     /
-         :      ,'
-         |      |
-         |      |
-         |      |
-         |      |  Je suis Charlie.
+        ,-: |.'-:|..-.-..
+    _..-:| | `-`. \.--'-'
+ -<...--:'-|_|_|;  \
+         \   /     /
+          :      ,'
+          |      |
+          |      |
+          |      |
+          |      |  Je suis Charlie.
 
 */
 /**
@@ -34,9 +34,9 @@
   -webkit-flex-direction: row;
       -ms-flex-direction: row;
           flex-direction: row;
-  -webkit-flex-flow: row nowrap;
-      -ms-flex-flow: row nowrap;
-          flex-flow: row nowrap; }
+  -webkit-flex-flow: row wrap;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap; }
 
 /* line 56, /Users/atimberlake/Webroot/Patchwork/components/Patchwork.scss */
 *[data-patchwork] {

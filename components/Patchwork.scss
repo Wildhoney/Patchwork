@@ -50,19 +50,11 @@ $column-width: ($max-width / $column-count);
   display: flex;
   max-width: $max-width;
   flex-direction: row;
-  flex-flow: row nowrap;
+  flex-flow: row wrap;
 }
 
 *[data-patchwork] {
   flex: 1 1 100%;
-}
-
-@media all and (max-width: map-get($breakpoints, small)) {
-
-  .patchwork {
-      flex-flow: row wrap;
-  }
-
 }
 
 @mixin column-styles($label) {
