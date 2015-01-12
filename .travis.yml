@@ -1,0 +1,20 @@
+language: node_js
+
+node_js:
+  - '0.10'
+  - '0.11'
+
+script:
+  - npm install
+  - bower install
+  - gulp test
+
+deploy:
+  provider: heroku
+  all_branches: true
+  skip_cleanup: true
+  api_key:
+    secure: E+z6hWI9PNscwt/oWtWKEc7UDyYC/++5qVnehCLtTXxHs/SftHou7Yzm9zR2Ah/OFryOxdw3rGC3V8iT99rjUUguITmA/NcLtC6jUScQwToil/CR+qcNGZ4CVYwqlxwq3jUANR+5WKgKYkvhaOwoQPWUbFq4Yfbvr1E6DopADpQ=
+  app: patchwork-app
+  on:
+    repo: Wildhoney/Patchwork
