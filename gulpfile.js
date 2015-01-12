@@ -29,9 +29,10 @@
         sass         = require('gulp-sass'),
         rename       = require('gulp-rename'),
         sourcemaps   = require('gulp-sourcemaps'),
-        autoprefixer = require('gulp-autoprefixer');
+        autoprefixer = require('gulp-autoprefixer'),
+        cssmin       = require('gulp-cssmin');
 
-    gulp.task('build-sass', function () {
+    gulp.task('build-sass', function() {
 
         gulp.src(COMPONENT_FILES)
             .pipe(sourcemaps.init())
@@ -46,8 +47,17 @@
 
     });
 
+    gulp.task('minify-css', function() {
+
+        gulp.src(DESTINATION_RELEASE + '/' + DESTINATION_FILENAME)
+            .pipe(cssmin())
+            .pipe(rename({ suffix: '.min' }))
+            .pipe(gulp.dest(DESTINATION_RELEASE));
+
+    });
+
     gulp.task('test', []);
-    gulp.task('build', ['build-sass']);
+    gulp.task('build', ['build-sass', 'minify-css']);
     gulp.task('default', ['build']);
     gulp.task('watch', function watch() {
         gulp.watch(COMPONENT_FILES, ['build']);
