@@ -34,7 +34,7 @@ $column-count: 12;
 $order-limit: (from: -10, to: 25);
 
 // Breakpoints in pixels for tiny, small, medium and large.
-$breakpoints: (none: 0, tiny: 400px, small: 550px, medium: 700px, large: 960px);
+$breakpoints: (none: 0, tiny: 400px, small: 550px, medium: 700px, large: $max-width);
 
 // ---------
 
@@ -48,7 +48,7 @@ $column-width: ($max-width / $column-count);
 
 .patchwork {
   display: flex;
-  max-width: 960px;
+  max-width: $max-width;
   flex-direction: row;
   flex-flow: row nowrap;
 }
