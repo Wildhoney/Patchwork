@@ -1,13 +1,19 @@
 $size-limit: 15;
-$order-limit: 25;
-$breakpoints: (tiny: 400px, small: 550px, medium: 700px, large: 960px);
+$order-limit: (from: -10, to: 25);
+$breakpoints: (none: 0, tiny: 400px, small: 550px, medium: 700px, large: 960px);
 $colours: (tiny: red, small: green, medium: blue, large: yellow);
+
+$order-list: null;
 
 .patchwork {
   display: flex;
   max-width: 960px;
   flex-direction: row;
   border: 1px solid green;
+}
+
+*[data-patchwork] {
+  flex: 1;
 }
 
 @media all and (max-width: map-get($breakpoints, small)) {
@@ -18,10 +24,6 @@ $colours: (tiny: red, small: green, medium: blue, large: yellow);
 
 }
 
-.column {
-  border: 1px solid red;
-}
-
 @mixin column-styles($label) {
 
   .patchwork {
@@ -30,16 +32,16 @@ $colours: (tiny: red, small: green, medium: blue, large: yellow);
 
   @for $index from 0 through $size-limit {
 
-    *[data-#{$label}-size="#{$index}"] {
+    *[data-patchwork*="#{$label}-size: #{$index}"] {
       flex: $index;
     }
 
   }
 
-  @for $index from 0 through $order-limit {
+  @for $index from map-get($order-limit, from) through map-get($order-limit, to) {
 
-    *[data-#{$label}-order="#{$index}"] {
-      order: $index;
+    *[data-patchwork*="#{$label}-order: #{$index}"] {
+      order: $index
     }
 
   }
@@ -49,20 +51,25 @@ $colours: (tiny: red, small: green, medium: blue, large: yellow);
 @mixin columns {
 
   $labels-list: tiny small medium large;
+  $previous-label: none;
 
   @each $label in $labels-list {
 
     @if $label == large {
 
-      @include column-styles($label);
-      
+      @media all and (min-width: map-get($breakpoints, $previous-label)) {
+        @include column-styles($label);
+      }
+
     } @else {
 
-      @media all and (max-width: map-get($breakpoints, $label)) {
+      @media all and (min-width: map-get($breakpoints, $previous-label)) and (max-width: map-get($breakpoints, $label)) {
         @include column-styles($label);
       }
 
     }
+
+    $previous-label: $label;
 
   }
 
