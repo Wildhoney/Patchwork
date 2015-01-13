@@ -1,6 +1,6 @@
 {
   "name": "patchwork-app",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Patchwork is a responsive CSS framework using the benefits of HTML5's Flexbox.",
   "main": "dist/patchwork.css",
   "directories": {
