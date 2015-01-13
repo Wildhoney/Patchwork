@@ -63,14 +63,28 @@ $column-width: ($max-width / $column-count);
       flex: 1 $max-width;
   }
 
-  @for $index from 0 through $column-count {
+  @if $label == large or $label == medium {
 
-    *[data-patchwork*="#{$label}-size: #{$index}"] {
+    @for $index from 0 through $column-count {
 
-        @if $index == 0 {
-            flex: $index;
-        } @else {
-            flex: $index ($column-width * $index);
+        *[data-patchwork*="#{$label}-size: #{$index}"] {
+
+            @if $index == 0 {
+                flex: $index;
+            } @else {
+                flex: $index;
+                max-width: #{$column-width * $index};
+            }
+
+        }
+
+        *[data-patchwork*="#{$label}-size: #{$index}!"] {
+
+            @if $index != 0 {
+                flex: $index #{$column-width * $index};
+                width: #{$column-width * $index};
+            }
+
         }
 
     }
