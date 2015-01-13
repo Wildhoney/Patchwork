@@ -9,6 +9,7 @@
 ![Experimental](http://img.shields.io/badge/%20!%20%20-experimental-blue.svg?style=flat)
 
 * **Bower:** `bower install patchwork-app`
+* **Video:** [Watch on Vimeo](https://vimeo.com/116675627)
 
 # Getting Started
 
