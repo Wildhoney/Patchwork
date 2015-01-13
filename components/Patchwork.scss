@@ -14,10 +14,6 @@ $column-width: ($max-width / $column-count);
 
 @mixin column-styles($label) {
 
-  *[data-patchwork*="#{$label}-default"] {
-      flex: 1 $max-width;
-  }
-
   @if $label == large or $label == medium {
 
     @for $index from 0 through $column-count {

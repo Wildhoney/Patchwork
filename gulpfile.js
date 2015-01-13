@@ -37,9 +37,10 @@
         sourcemaps   = require('gulp-sourcemaps'),
         autoprefixer = require('gulp-autoprefixer'),
         cssmin       = require('gulp-cssmin'),
+        size         = require('gulp-filesize'),
         argv         = require('yargs').argv;
 
-    gulp.task('build-sass', function() {
+    gulp.task('build-sass', function buildSass() {
 
         var filename             = !argv.custom ? DESTINATION_FILENAME    : DESTINATION_FILENAME_CUSTOM,
             directoryRelease     = !argv.custom ? DESTINATION_RELEASE     : DESTINATION_RELEASE + '/custom',
@@ -66,20 +67,38 @@
 
     });
 
-    gulp.task('minify-css', ['build-sass'], function() {
+    /**
+     * @method getDirectory
+     * @return {String}
+     */
+    var getDirectory = function getDirectory() {
+        return !argv.custom ? DESTINATION_RELEASE  : DESTINATION_RELEASE + '/custom';
+    };
 
-        var directory = !argv.custom ? DESTINATION_RELEASE  : DESTINATION_RELEASE + '/custom',
-            filename  = !argv.custom ? DESTINATION_FILENAME : DESTINATION_FILENAME_CUSTOM;
+    /**
+     * @method getFilename
+     * @return {String}
+     */
+    var getFilename = function getFilename() {
+        return !argv.custom ? DESTINATION_FILENAME : DESTINATION_FILENAME_CUSTOM;
+    };
 
-        return gulp.src(directory + '/' + filename)
+    gulp.task('minify-css', ['build-sass'], function minifyCss() {
+
+        return gulp.src(getDirectory() + '/' + getFilename())
                     .pipe(cssmin())
                     .pipe(rename({ suffix: '.min' }))
-                    .pipe(gulp.dest(directory));
+                    .pipe(gulp.dest(getDirectory()));
 
     });
 
+    gulp.task('css-filesize', ['minify-css'], function cssFilesize() {
+        var filename = !argv.custom ? 'patchwork.min.css' : 'patchwork.custom.min.css';
+        return gulp.src(getDirectory() + '/' + filename).pipe(size());
+    });
+
     gulp.task('test', []);
-    gulp.task('build', ['build-sass', 'minify-css']);
+    gulp.task('build', ['build-sass', 'minify-css', 'css-filesize']);
     gulp.task('default', ['build']);
     gulp.task('watch', function watch() {
         gulp.watch(COMPONENT_FILES, ['build']);
