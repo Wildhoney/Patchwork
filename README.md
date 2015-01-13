@@ -11,7 +11,7 @@
 ![Patchwork Elephant](http://www.baby-books-guide.com/image-files/elmer-the-patchwork-elephant-01.jpg)
 
 * **Bower:** `bower install patchwork-app`
-* **Video:** [Watch on Vimeo](https://vimeo.com/116675627)
+* **Video:** [Watch on Vimeo](https://vimeo.com/116708086)
 
 # Getting Started
 
