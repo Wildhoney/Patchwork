@@ -96,6 +96,16 @@ With Flexbox it's not easy to force a break in the content &ndash; that is why P
 
 If you would like to break when **large** and not break when **medium**, then simply use the value `none`: `large-size: break, medium-size: none`
 
+### Alternative
+
+An alternative approach to the break uses the custom HTML element `patchwork-break` which accepts a `for` attribute which determines at which sizes it breaks the content:
+
+```html
+<patchwork-break for="large medium"></patchwork-break>
+```
+
+By removing the **medium** label, the break would not occur when the container is in its medium dimension.
+
 # Custom Build
 
 By default `Patchwork` uses 16 columns with a maximum width of `960px` &ndash; you can modify these defaults by opening up `Options.scss` and changing the necessary variables &ndash; afterwards invoke `gulp build --custom` to initiate a custom build that will output to `dist/custom`.

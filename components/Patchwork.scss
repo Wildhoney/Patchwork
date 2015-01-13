@@ -12,6 +12,10 @@ $column-width: ($max-width / $column-count);
   flex: 1 1 100%;
 }
 
+patchwork-break {
+    display: none;
+}
+
 @mixin column-styles($label) {
 
   *[data-patchwork*="#{$label}-size: none"] {
@@ -20,9 +24,10 @@ $column-width: ($max-width / $column-count);
 
   @if $label == large or $label == medium {
 
-    *[data-patchwork*="#{$label}-size: break"] {
+    *[data-patchwork*="#{$label}-size: break"], patchwork-break[for*="#{$label}"] {
         width: $max-width;
         visibility: hidden;
+        display: block;
         height: 0 !important;
         padding: 0 !important;
         margin: 0 !important;
