@@ -16,6 +16,14 @@ $column-width: ($max-width / $column-count);
 
   @if $label == large or $label == medium {
 
+    *[data-patchwork*="#{$label}-size: break"] {
+        width: $max-width;
+        visibility: hidden;
+        height: 0 !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
     @for $index from 0 through $column-count {
 
         *[data-patchwork*="#{$label}-size: #{$index}"] {
