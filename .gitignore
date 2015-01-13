@@ -1,4 +1,6 @@
 /.idea
 /node_modules
+/dist/custom/*
+!/dist/custom/.gitkeep
 /example/vendor/*
 !/example/vendor/.gitkeep
